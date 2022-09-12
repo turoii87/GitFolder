@@ -1,22 +1,31 @@
-
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './App.css';
 
-function App() {
+
+function App(props) {
   return (
-    <div className="App">
-        <p>
-          Welcome to Sextant.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className={'App App-' + props.color}>
+      {props.children}
     </div>
   );
 }
+
+function WelcomeDialog() {
+  return (
+    <App color="blue">
+      <h1 className="Dialog-title">
+        Welcome
+      </h1>
+      <p className="Dialog-message">
+        Thank you for visiting Sextant!
+      </p>
+    </App>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<WelcomeDialog />);
+
 
 export default App;
